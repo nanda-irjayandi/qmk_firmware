@@ -41,11 +41,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_65_with_macro( /* MacOS Layer */
-    LGUI(KC_C), LGUI(KC_V),     QK_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                      KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                               KC_HOME,
-    LGUI(KC_Z), LSG(KC_Z),      KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                                 KC_PGUP,
-    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LCTL_T(KC_A), LALT_T(KC_S), LGUI_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RGUI_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT, LT(6, KC_ENT),                 KC_PGDN,
-    MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, OSM(MOD_RSFT), KC_UP,                                              KC_END,
-    DM_PLY1, DM_PLY2,           OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), OSL(8), LT(9, KC_SPC),               KC_SPC, KC_SPC, OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RCTL), KC_LEFT, LT(10, KC_DOWN),                   KC_RGHT
+    LGUI(KC_C), LGUI(KC_V),     QK_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                      KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                   KC_HOME,
+    LGUI(KC_Z), LSG(KC_Z),      KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                     KC_PGUP,
+    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LCTL_T(KC_A), LALT_T(KC_S), LGUI_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RGUI_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT, LT(6, KC_ENT),     KC_PGDN,
+    MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, OSM(MOD_RSFT), KC_UP,                                  KC_END,
+    DM_PLY1, DM_PLY2,           OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), OSL(8), LT(9, KC_SPC),               KC_SPC, KC_SPC, OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RCTL), KC_LEFT, LT(10, KC_DOWN),       KC_RGHT
   ),
 
   [1] = LAYOUT_65_with_macro( /* Win Linux BSD Layer */
@@ -65,11 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [5] = LAYOUT_65_with_macro( /* Special Fn Layer for Teddie */
-    KC_TRNS, KC_TRNS,     QK_GESC,     KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_TRNS,                                         KC_TRNS,
-    KC_TRNS, KC_TRNS,     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,            KC_TRNS,
-    KC_TRNS, KC_TRNS,     KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                 KC_TRNS,
-    KC_TRNS, KC_TRNS,     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS,
-    DM_PLY1, DM_PLY2,     KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS
+    KC_TRNS, KC_TRNS,     QK_GESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_TRNS,              KC_TRNS,
+    KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS,
+    KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS,
+    KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS,
+    DM_PLY1, DM_PLY2,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS
   ),
 
   [6] = LAYOUT_65_with_macro( /* Data Entry Layer WIP 90percent Felt incomplete */
@@ -81,19 +81,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [7] = LAYOUT_65_with_macro( /* Function 1 Layer QUICK and SPECIAL Access ACS Caps Lock WIP */
-    MEH(KC_KP_1), MEH(KC_KP_2),      KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_DEL,                                         MEH(KC_HOME),
-    MEH(KC_KP_3), MEH(KC_KP_4),      MEH(KC_TAB),  MEH(KC_Q), KC_UP, MEH(KC_E), MEH(KC_R), MEH(KC_T),                   MEH(KC_Y), MEH(KC_U), MEH(KC_I), MEH(KC_O), MEH(KC_P), MEH(KC_LBRC), MEH(KC_RBRC), MEH(KC_BSLS),       MEH(KC_PGUP),
-    MEH(KC_KP_5), MEH(KC_KP_6),      KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, MEH(KC_F), MEH(KC_G),                            MEH(KC_H), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MEH(KC_QUOT), MEH(KC_ENT),                              MEH(KC_PGDN),
-    MEH(KC_KP_7), MEH(KC_KP_8),      KC_TRNS, MEH(KC_Z), MEH(KC_X), MEH(KC_C), MEH(KC_V), MEH(KC_B),                    MEH(KC_N), MEH(KC_M), MEH(KC_COMM), MEH(KC_DOT),  MEH(KC_SLSH), KC_TRNS, MEH(KC_UP),                   MEH(KC_END),
-    MEH(KC_KP_9), MEH(KC_KP_0),      KC_TRNS, KC_TRNS, KC_TRNS, TG(8), MEH(KC_SPC),                                     MEH(KC_SPC), MEH(KC_SPC), KC_TRNS, KC_TRNS, KC_TRNS, MEH(KC_LEFT), MEH(KC_DOWN),                       MEH(KC_RGHT)
+    MEH(KC_KP_1), MEH(KC_KP_2),      KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                    KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_DEL,                                         MEH(KC_HOME),
+    MEH(KC_KP_3), MEH(KC_KP_4),      MEH(KC_TAB),  MEH(KC_Q), KC_UP, MEH(KC_E), MEH(KC_R), MEH(KC_T),     MEH(KC_Y), MEH(KC_U), MEH(KC_I), MEH(KC_O), MEH(KC_P), MEH(KC_LBRC), MEH(KC_RBRC), MEH(KC_BSLS),     MEH(KC_PGUP),
+    MEH(KC_KP_5), MEH(KC_KP_6),      KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, MEH(KC_F), MEH(KC_G),              KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, MEH(KC_SCLN), MEH(KC_QUOT), MEH(KC_ENT),                           MEH(KC_PGDN),
+    MEH(KC_KP_7), MEH(KC_KP_8),      KC_TRNS, MEH(KC_Z), MEH(KC_X), MEH(KC_C), MEH(KC_V), MEH(KC_B),      MEH(KC_N), MEH(KC_M), MEH(KC_COMM), MEH(KC_DOT),  MEH(KC_SLSH), KC_TRNS, MEH(KC_UP),                 MEH(KC_END),
+    MEH(KC_KP_9), MEH(KC_KP_0),      KC_TRNS, KC_TRNS, KC_TRNS, TG(8), MEH(KC_SPC),                       MEH(KC_SPC), MEH(KC_SPC), KC_TRNS, KC_TRNS, KC_TRNS, MEH(KC_LEFT), MEH(KC_DOWN),                     MEH(KC_RGHT)
   ),
 
   [8] = LAYOUT_65_with_macro( /* Function 2 MEH Layer OSL and MacroPad ACS Left Special Mod Button TOGGLE from layer 7 9 10 */
     MEH(KC_KP_1), MEH(KC_KP_2),      MEH(KC_GRV), MEH(KC_1), MEH(KC_2), MEH(KC_3), MEH(KC_4), MEH(KC_5), MEH(KC_6),     MEH(KC_7), MEH(KC_8), MEH(KC_9), MEH(KC_0), MEH(KC_MINS), MEH(KC_EQL), MEH(KC_BSPC), MEH(KC_BSPC),     MEH(KC_HOME),
-    MEH(KC_KP_3), MEH(KC_KP_4),      MEH(KC_TAB),  MEH(KC_Q), MEH(KC_W), MEH(KC_E), MEH(KC_R), MEH(KC_T),     MEH(KC_Y), MEH(KC_U), MEH(KC_I), MEH(KC_O), MEH(KC_P), MEH(KC_LBRC), MEH(KC_RBRC), MEH(KC_BSLS),     MEH(KC_PGUP),
-    MEH(KC_KP_5), MEH(KC_KP_6),      MEH(KC_CAPS), MEH(KC_A), MEH(KC_S), MEH(KC_D), MEH(KC_F), MEH(KC_G),     MEH(KC_H), MEH(KC_J), MEH(KC_K), MEH(KC_L), MEH(KC_SCLN), MEH(KC_QUOT), MEH(KC_ENT),                 MEH(KC_PGDN),
-    MEH(KC_KP_7), MEH(KC_KP_8),      KC_TRNS, MEH(KC_Z), MEH(KC_X), MEH(KC_C), MEH(KC_V), MEH(KC_B),          MEH(KC_N), MEH(KC_M), MEH(KC_COMM), MEH(KC_DOT), MEH(KC_SLSH), KC_TRNS, MEH(KC_UP),                  MEH(KC_END),
-    MEH(KC_KP_9), MEH(KC_KP_0),      KC_TRNS, KC_TRNS, KC_TRNS, TG(8), MEH(KC_SPC),                           MEH(KC_SPC), MEH(KC_SPC), KC_NO, KC_NO, KC_NO, MEH(KC_LEFT), MEH(KC_DOWN),                           MEH(KC_RGHT)
+    MEH(KC_KP_3), MEH(KC_KP_4),      MEH(KC_TAB),  MEH(KC_Q), MEH(KC_W), MEH(KC_E), MEH(KC_R), MEH(KC_T),               MEH(KC_Y), MEH(KC_U), MEH(KC_I), MEH(KC_O), MEH(KC_P), MEH(KC_LBRC), MEH(KC_RBRC), MEH(KC_BSLS),       MEH(KC_PGUP),
+    MEH(KC_KP_5), MEH(KC_KP_6),      MEH(KC_CAPS), MEH(KC_A), MEH(KC_S), MEH(KC_D), MEH(KC_F), MEH(KC_G),               MEH(KC_H), MEH(KC_J), MEH(KC_K), MEH(KC_L), MEH(KC_SCLN), MEH(KC_QUOT), MEH(KC_ENT),                   MEH(KC_PGDN),
+    MEH(KC_KP_7), MEH(KC_KP_8),      KC_TRNS, MEH(KC_Z), MEH(KC_X), MEH(KC_C), MEH(KC_V), MEH(KC_B),                    MEH(KC_N), MEH(KC_M), MEH(KC_COMM), MEH(KC_DOT), MEH(KC_SLSH), KC_TRNS, MEH(KC_UP),                    MEH(KC_END),
+    MEH(KC_KP_9), MEH(KC_KP_0),      KC_TRNS, KC_TRNS, KC_TRNS, TG(8), MEH(KC_SPC),                                     MEH(KC_SPC), MEH(KC_SPC), KC_NO, KC_NO, KC_NO, MEH(KC_LEFT), MEH(KC_DOWN),                             MEH(KC_RGHT)
   ),
 
   [9] = LAYOUT_65_with_macro( /* Function 3 HYPR Layer ACS Left Space Bar using Layer-Tap WIP */
