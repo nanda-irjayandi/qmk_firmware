@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [7] = LAYOUT_65_with_macro( /* Function 1 Layer QUICK and SPECIAL Access ACS Caps Lock WIP */
     MEH(KC_KP_1), MEH(KC_KP_2),      KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                    KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_DEL,                                         MEH(KC_HOME),
     MEH(KC_KP_3), MEH(KC_KP_4),      MEH(KC_TAB),  MEH(KC_Q), KC_UP, MEH(KC_E), MEH(KC_R), MEH(KC_T),     MEH(KC_Y), MEH(KC_U), MEH(KC_I), MEH(KC_O), MEH(KC_P), MEH(KC_LBRC), MEH(KC_RBRC), MEH(KC_BSLS),     MEH(KC_PGUP),
-    MEH(KC_KP_5), MEH(KC_KP_6),      KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, MEH(KC_F), MEH(KC_G),              KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_TRNS, MEH(KC_QUOT), MEH(KC_ENT),                           MEH(KC_PGDN),
+    MEH(KC_KP_5), MEH(KC_KP_6),      KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, MEH(KC_F), MEH(KC_G),              MEH(KC_H), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MEH(KC_QUOT), MEH(KC_ENT),                           MEH(KC_PGDN),
     MEH(KC_KP_7), MEH(KC_KP_8),      KC_TRNS, MEH(KC_Z), MEH(KC_X), MEH(KC_C), MEH(KC_V), MEH(KC_B),      MEH(KC_N), MEH(KC_M), MEH(KC_COMM), MEH(KC_DOT),  MEH(KC_SLSH), KC_TRNS, MEH(KC_UP),                 MEH(KC_END),
     MEH(KC_KP_9), MEH(KC_KP_0),      KC_TRNS, KC_TRNS, KC_TRNS, TG(8), MEH(KC_SPC),                       MEH(KC_SPC), MEH(KC_SPC), KC_TRNS, KC_TRNS, KC_TRNS, MEH(KC_LEFT), MEH(KC_DOWN),                     MEH(KC_RGHT)
   ),
@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [10] = LAYOUT_65_with_macro( /* Menu Layer NOTE the Right Mod is there for Shiroyama Encoder RGB */
-    RGB_MOD, RGB_RMOD,     TG(5), TG(6), TG(4), KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT,    RGB_SPI,
+    RGB_MOD, RGB_RMOD,     TG(5), TG(6), TG(4), KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT, QK_MAKE, KC_NO,    RGB_SPI,
     KC_NO, KC_NO,          KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_NO, KC_NO,         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,     RGB_VAI,
     OS_OFF, OS_ON,         KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(6),            RGB_VAD,
     NK_OFF, NK_ON,         KC_NO, KC_BRID, KC_F15, KC_BRIU, KC_NO, KC_NO,          KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,            RGB_SPD,
