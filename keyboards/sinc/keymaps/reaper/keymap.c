@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [5] = LAYOUT_80_with_macro( /* Data Entry Layer WIP 90percent Felt incomplete */
-    CX_ENCTOGG,                KC_ESC,      KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                          KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,               KC_INS,
+    CX_ENCTOGG,           KC_ESC,      KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                          KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,               KC_INS,
     KC_TRNS, KC_TRNS,     KC_GRV,      KC_NO, KC_KP_SLASH, KC_KP_ASTERISK, KC_KP_MINUS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,            KC_HOME,
     KC_TRNS, KC_TRNS,     KC_TAB,      KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_PLUS, KC_NO,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,            KC_PGUP,
     KC_TRNS, KC_TRNS,     KC_BSPC,     KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ENTER, KC_NO,                     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, OSL(10), TG(5),                 KC_PGDN,
@@ -87,12 +87,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [10] = LAYOUT_80_with_macro( /* Menu Layer NOTE the Right Mod is there for Shiroyama Encoder RGB */
-    CX_ENCTOGG,                  KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,       KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, CX_LEDDN,              CX_LEDUP,
-    RGB_MOD, RGB_RMOD,      TG(6), TG(5), TG(4), KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT,     RGB_SPI,
+    CX_ENCTOGG,             KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,       KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, CX_LEDDN,        CX_LEDUP,
+    RGB_MOD, RGB_RMOD,      TG(6), TG(5), TG(4), KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT,      RGB_SPI,
     KC_NO, KC_NO,           KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_NO, KC_NO,         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_BOOT,     RGB_VAI,
-    OS_OFF, OS_ON,          KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, QK_LOCK, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(5),            RGB_VAD,
-    NK_OFF, NK_ON,          KC_NO, KC_BRID, KC_F15, KC_BRIU, KC_NO, KC_NO,          KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,            RGB_SPD,
-    DM_REC1, DM_REC2,       KC_NO, DF(1), DF(0), TG(10), TG(10), TG(8),             KC_NO, KC_NO, KC_RGUI, KC_RALT, KC_RCTL, RGB_HUD, KC_NO,    RGB_HUI
+    OS_OFF, OS_ON,          KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, QK_LOCK, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(5),              RGB_VAD,
+    NK_OFF, NK_ON,          KC_NO, KC_BRID, KC_F15, KC_BRIU, KC_NO, KC_NO,          KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,              RGB_SPD,
+    DM_REC1, DM_REC2,       KC_NO, DF(1), DF(0), TG(10), TG(10), TG(8),             KC_NO, KC_NO, KC_RGUI, KC_RALT, KC_RCTL, RGB_HUD, KC_NO,      RGB_HUI
   )
 };
 
