@@ -5,19 +5,46 @@
 
 // Super Alt Tab currently disabled due to persistent button press Bug and performance cost
 
-// Declare & Define Super-Alt-Tab Timer Var
-/* bool     is_alt_tab_active = false;
-uint16_t alt_tab_timer     = 0; */
-
 bool is_recording = false;
 
-enum custom_keycodes {
-    QWERTY = SAFE_RANGE,
-//    RGB_SPUP,
-//    RGB_SPDN,
-/*     ALT_TAB,
-    ALT_GRV, */
-};
+// enum custom_keycodes {
+//     TD_RSFT
+// };
+
+
+
+// void dance_egg(tap_dance_state_t *state, void *user_data) {
+//     if (state->count == 1) {
+//         set_oneshot_mods(MOD_BIT(KC_RSFT));
+//     } else if (state->count == 2) {
+//         register_code(KC_LBRC);
+//         unregister_code(KC_LBRC);
+//     } else if (state->count == 3) {
+//         register_code(KC_RBRC);
+//         unregister_code(KC_RBRC);
+//     }
+// };
+
+// void dance_egg(tap_dance_state_t *state, void *user_data){
+//     switch (state->count) {
+//         case 1:
+//             set_oneshot_mods(MOD_BIT(KC_RSFT));
+//             break;
+//         case 2:
+//             register_code(KC_LBRC);
+//             unregister_code(KC_LBRC);
+//             break;
+//         case 3:
+//             register_code(KC_RBRC);
+//             unregister_code(KC_RBRC);
+//             break;
+//     }
+// }
+
+// tap_dance_action_t tap_dance_actions[] = {
+//     [TD_RSFT] = ACTION_TAP_DANCE_FN(dance_egg),
+// };
+
 
 const rgblight_segment_t PROGMEM DEV_LAYER[]          = RGBLIGHT_LAYER_SEGMENTS({0, 16, HSV_GREEN});
 const rgblight_segment_t PROGMEM DATA_LAYER[]         = RGBLIGHT_LAYER_SEGMENTS({0, 16, HSV_BLUE});
@@ -64,13 +91,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [4] = LAYOUT_65_with_macro( /* Speedtyping Layer or when you are annoyed by the lag from the home row modifier TODO separate game speedype layer with dev layer the latter use space cadet */
     KC_TRNS, KC_TRNS,           QK_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,          KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,               KC_HOME,
     KC_TRNS, KC_TRNS,           KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                 KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                 KC_PGUP,
-    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), KC_A, KC_S, KC_D, KC_F, KC_G,         KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, LT(5, KC_ENT),                 KC_PGDN,
+    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), KC_A, KC_S, KC_D, KC_F, KC_G,         KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, LT(6, KC_ENT),                 KC_PGDN,
     MEH(KC_F7), MEH(KC_F8),     KC_TRNS, KC_Z, KC_X, KC_C, KC_V, KC_B,                KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_TRNS, KC_UP,                    KC_END,
     DM_PLY1, DM_PLY2,           KC_TRNS, KC_TRNS, KC_TRNS, OSL(8), LT(9, KC_SPC),     KC_SPC, KC_SPC, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, LT(10, KC_DOWN),     KC_RGHT
   ),
 
   [5] = LAYOUT_65_with_macro( /* Special Fn Layer for Teddie */
-    KC_TRNS, KC_TRNS,          QK_GESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_TRNS,              KC_TRNS,
+    KC_TRNS, KC_TRNS,          KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,         KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_TRNS,              KC_TRNS,
     KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS,
     KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS,
     KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS,
@@ -110,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [10] = LAYOUT_65_with_macro( /* Menu Layer NOTE the Right Mod is there for Shiroyama Encoder RGB */
-    RGB_MOD, RGB_RMOD,     TG(5), TG(6), TG(4), KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT, QK_MAKE, KC_NO,    RGB_SPI,
+    RGB_MOD, RGB_RMOD,     TG(5), TG(6), TG(4), KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT, QK_MAKE, KC_NO, KC_NO,    RGB_SPI,
     KC_NO, KC_NO,          KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_NO, KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,       RGB_VAI,
     OS_OFF, OS_ON,         KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(6),              RGB_VAD,
     NK_OFF, NK_ON,         KC_NO, KC_BRID, KC_F15, KC_BRIU, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,              RGB_SPD,
@@ -126,45 +153,7 @@ void caps_word_set_user(bool active) {
         rgblight_set_layer_state(2, is_caps_word_on());
 };
 
-// 20250113 seems to be deprecated
-// void dynamic_macro_record_start_user(int8_t direction) {
-//     rgblight_blink_layer_repeat(2, 1000, 150); // blink for five minute
-//     rgblight_disable_noeeprom();
-// };
-
-// void dynamic_macro_record_end_user(int8_t direction) {
-//     rgblight_unblink_layer(2);
-//     rgblight_enable_noeeprom();
-// };
-
-// bool dynamic_macro_record_start_kb(int8_t direction) {
-//     if (!dynamic_macro_record_start_user(direction)) {
-//         return false;
-//     }
-//     rgblight_blink_layer_repeat(2, 1000, 150); // blink for five minute
-//     rgblight_disable_noeeprom(); // hide underlying layer while recording
-
-//     return true;
-// };
-
-// bool dynamic_macro_record_end_kb(int8_t direction) {
-//     if (!dynamic_macro_record_end_user(direction)) {
-//         return false;
-//     }
-//     rgblight_unblink_layer(2);
-//     rgblight_enable_noeeprom();
-
-//     return true;
-// };
-
-// const uint16_t PROGMEM test_combo1[] = {KC_C, KC_M, COMBO_END};
-
-// combo_t key_combos[] = {
-//     COMBO(test_combo1, KC_ESC),
-// };
-
 // Custom Keycodes
-// Disabled in rev 3 as no use for now see Rev 2 for history
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return true; // process all keycodes normally
 };
