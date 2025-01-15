@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_H
 
-bool is_encoder_switcher_active = false;
+bool is_encoder_swicher_active = false;
 int led_index = 0;
 
 enum custom_keycodes {
@@ -15,20 +15,20 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_80_with_macro( /* MacOS Layer */
-    CX_ENCTOGG,                 KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                                 KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,                                         KC_INS,
-    LGUI(KC_C), LGUI(KC_V),     KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                       KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                   KC_HOME,
-    LGUI(KC_Z), LSG(KC_Z),      KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                     KC_PGUP,
-    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LCTL_T(KC_A), LALT_T(KC_S), LGUI_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RGUI_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT, LT(5, KC_ENT),     KC_PGDN,
-    MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, OSM(MOD_RSFT), KC_UP,                                  KC_END,
-    DM_PLY1, DM_PLY2,           OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), KC_SPC, KC_SPC, OSL(8),              KC_SPC, KC_SPC, OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RCTL), KC_LEFT, LT(10, KC_DOWN),       KC_RGHT
+    CX_ENCTOGG,                 KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                                 KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,              KC_INS,
+    LGUI(KC_C), LGUI(KC_V),     KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                       KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                               KC_HOME,
+    LGUI(KC_Z), LSG(KC_Z),      KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                                 KC_PGUP,
+    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LCTL_T(KC_A), LALT_T(KC_S), LGUI_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RGUI_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT, LT(5, KC_ENT),                 KC_PGDN,
+    MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, OSM(MOD_RSFT), KC_UP,                                              KC_END,
+    DM_PLY1, DM_PLY2,           OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), KC_SPC, KC_SPC, OSL(8),              KC_SPC, KC_SPC, OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RCTL), KC_LEFT, LT(10, KC_DOWN),     KC_RGHT
   ),
 
   [1] = LAYOUT_80_with_macro( /* WIN Linux BSD Layer */
-    CX_ENCTOGG,                 KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                                 KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,                                       KC_INS,
-    LCTL(KC_C), LCTL(KC_V),     KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                       KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                 KC_HOME,
-    LCTL(KC_Z), LCTL(KC_Y),     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                   KC_PGUP,
-    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT, KC_ENT,          KC_PGDN,
-    MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, OSM(MOD_RSFT), KC_UP,                                KC_END,
+    CX_ENCTOGG,                 KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,      KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,              KC_INS,
+    LCTL(KC_C), LCTL(KC_V),     KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                      KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                               KC_HOME,
+    LCTL(KC_Z), LCTL(KC_Y),     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                                 KC_PGUP,
+    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT, KC_ENT,         KC_PGDN,
+    MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, OSM(MOD_RSFT), KC_UP,                                              KC_END,
     DM_PLY1, DM_PLY2,           OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), KC_SPC, KC_SPC, OSL(8),              KC_SPC, KC_SPC, OSM(MOD_RALT), OSM(MOD_RGUI), OSM(MOD_RCTL), KC_LEFT, LT(10, KC_DOWN),     KC_RGHT
   ),
 
@@ -100,7 +100,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case CX_ENCTOGG:
             if (record->event.pressed) {
-                is_encoder_switcher_active = !is_encoder_switcher_active;
+                is_encoder_swicher_active = !is_encoder_swicher_active;
             }
         case CX_LEDUP:
             led_index = led_index + 1;
@@ -158,14 +158,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
 
-            default:
-                if (!is_encoder_switcher_active) {
+            case 0:
+                // Select RGB Mode by holding RGUI Button
+                if (!is_encoder_swicher_active) {
                     if (clockwise) {
                         tap_code(KC_LEFT);
                     } else {
                         tap_code(KC_RGHT);
                     }
-                } else if (is_encoder_switcher_active) {
+                } else if (is_encoder_swicher_active) {
                     if (clockwise) {
                         tap_code(KC_UP);
                     } else {
@@ -174,9 +175,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
 
-            // default:
-            //     // Handle unexpected current_layer values here
-            //     break;
+            default:
+                // Handle unexpected current_layer values here
+                break;
         }
     }
     return false;
