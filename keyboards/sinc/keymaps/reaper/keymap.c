@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [4] = LAYOUT_80_with_macro( /* Speedtyping Layer or when you are annoyed by the lag from the home row modifier TODO separate game speedype layer with dev layer the latter use space cadet */
-    CX_ENCTOGG,                      KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,      KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,                     KC_INS,
+    CX_ENCTOGG,                 KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,      KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,                     KC_INS,
     KC_TRNS, KC_TRNS,           KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,            KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,               KC_HOME,
     KC_TRNS, KC_TRNS,           KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                  KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                 KC_PGUP,
     MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), KC_A, KC_S, KC_D, KC_F, KC_G,          KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, LT(5, KC_ENT),                 KC_PGDN,
@@ -119,7 +119,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         switch (current_layer) {
             // In Menu Layer, encoder controls RGB Function.
             // Good example of using a function rather than KC as a means to execute
-            // Note that in Menu Layer the right modifier buttons are free from One Shot and must be held
+            // Note that in Menu Layer right modifier buttons are non One Shot and must be held
             case 10:
                 // Select RGB Mode by holding RGUI Button
                 if (get_mods() & MOD_BIT(KC_RGUI)) {
@@ -154,6 +154,23 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                         rgblight_decrease_val_noeeprom();
                     } else {
                         rgblight_increase_val_noeeprom();
+                    }
+                }
+                break;
+
+
+            case 3:
+                if (!is_encoder_switcher_active) {
+                    if (clockwise) {
+                        tap_code(KC_BRIU);
+                    } else {
+                        tap_code(KC_BRID);
+                    }
+                } else if (is_encoder_switcher_active) {
+                    if (clockwise) {
+                        tap_code(KC_VOLU);
+                    } else {
+                        tap_code(KC_VOLD);
                     }
                 }
                 break;
