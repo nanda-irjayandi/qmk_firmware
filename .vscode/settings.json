@@ -35,5 +35,6 @@
     "workbench.preferredHighContrastLightColorTheme": "Cyberpunk",
     "workbench.preferredDarkColorTheme": "2077",
     "workbench.preferredLightColorTheme": "Cyberpunk",
-    "github.copilot.editor.enableAutoCompletions": false
+    "github.copilot.editor.enableAutoCompletions": false,
+    "terminal.integrated.lineHeight": 1.5
 }
