@@ -27,5 +27,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_MAX_LAYERS 5
 #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 #define RGBLIGHT_LAYER_BLINK
-#define ENABLE_COMPILE_KEYCODE
+// #define ENABLE_COMPILE_KEYCODE
 

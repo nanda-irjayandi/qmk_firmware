@@ -46,14 +46,14 @@ bool is_recording = false;
 // };
 
 
-const rgblight_segment_t PROGMEM DEV_LAYER[]          = RGBLIGHT_LAYER_SEGMENTS({0, 16, HSV_GREEN});
+const rgblight_segment_t PROGMEM SPEED_LAYER[]        = RGBLIGHT_LAYER_SEGMENTS({0, 16, HSV_YELLOW});
 const rgblight_segment_t PROGMEM DATA_LAYER[]         = RGBLIGHT_LAYER_SEGMENTS({0, 16, HSV_BLUE});
 const rgblight_segment_t PROGMEM MOD_LAYER[]          = RGBLIGHT_LAYER_SEGMENTS({0, 16, HSV_RED});
-const rgblight_segment_t PROGMEM FUNCTION_LAYER[]     = RGBLIGHT_LAYER_SEGMENTS({8, 1, HSV_RED});
+const rgblight_segment_t PROGMEM FUNCTION_LAYER[]     = RGBLIGHT_LAYER_SEGMENTS({0, 16, HSV_GREEN});
 const rgblight_segment_t PROGMEM MENU_LAYER[]         = RGBLIGHT_LAYER_SEGMENTS({8, 1, HSV_WHITE});
 
 /* the right-most or bottom-most from above lime blocks overrides other lightning layer */
-const rgblight_segment_t* const PROGMEM _rgb_layers[] = RGBLIGHT_LAYERS_LIST(DEV_LAYER, DATA_LAYER, MOD_LAYER, FUNCTION_LAYER, MENU_LAYER);
+const rgblight_segment_t* const PROGMEM _rgb_layers[] = RGBLIGHT_LAYERS_LIST(SPEED_LAYER, DATA_LAYER, MOD_LAYER, FUNCTION_LAYER, MENU_LAYER);
 
 /* initialize rgb_layers */
 void keyboard_post_init_user(void) {
@@ -62,58 +62,73 @@ void keyboard_post_init_user(void) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, 4));  // Dev Layer
-    rgblight_set_layer_state(1, layer_state_cmp(state, 6));  // Data Layer
-    rgblight_set_layer_state(3,
-                                layer_state_cmp(state, 7) ||
-                                layer_state_cmp(state, 8) ||
-                                layer_state_cmp(state, 9));  // Data Layer
+    rgblight_set_layer_state(1, layer_state_cmp(state, 5));  // Data Layer
+    rgblight_set_layer_state(3, layer_state_cmp(state, 8) ||
+                                layer_state_cmp(state, 9));  // Function Layer
     rgblight_set_layer_state(4, layer_state_cmp(state, 10)); // Menu Layer
+    // switch (state) {
+    //     case 4:
+    //         rgblight_sethsv_noeeprom(HSV_YELLOW);
+    //         break;
+    //     case 5:
+    //         rgblight_sethsv_noeeprom(HSV_YELLOW);
+    //         break;
+    //     case 7 ... 9:
+    //         rgblight_sethsv_noeeprom(HSV_GREEN);
+    //         break;
+    //     case 10:
+    //         rgblight_sethsv_noeeprom(HSV_WHITE);
+    //         break;
+    //     default:
+    //         rgblight_reload_from_eeprom();
+    //         break;
+    // }
     return state;
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_65_with_macro( /* MacOS Layer */
-    LGUI(KC_C), LGUI(KC_V),     QK_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                      KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                   KC_HOME,
+    LGUI(KC_C), LGUI(KC_V),     KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                      KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                   KC_HOME,
     LGUI(KC_Z), LSG(KC_Z),      KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                     KC_PGUP,
-    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LCTL_T(KC_A), LALT_T(KC_S), LGUI_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RGUI_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT, LT(6, KC_ENT),     KC_PGDN,
+    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LCTL_T(KC_A), LALT_T(KC_S), LGUI_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RGUI_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT, LT(5, KC_ENT),     KC_PGDN,
     MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, OSM(MOD_RSFT), KC_UP,                                  KC_END,
     DM_PLY1, DM_PLY2,           OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), OSL(8), LT(9, KC_SPC),               KC_SPC, KC_SPC, OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RCTL), KC_LEFT, LT(10, KC_DOWN),       KC_RGHT
   ),
 
   [1] = LAYOUT_65_with_macro( /* Win Linux BSD Layer */
-    LCTL(KC_C), LCTL(KC_V),     QK_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                      KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                   KC_HOME,
+    LCTL(KC_C), LCTL(KC_V),     KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,                                      KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,                                   KC_HOME,
     LCTL(KC_Z), LCTL(KC_Y),     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                             KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                                     KC_PGUP,
-    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT, LT(6, KC_ENT),     KC_PGDN,
+    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,     KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT, LT(5, KC_ENT),     KC_PGDN,
     MEH(KC_F7), MEH(KC_F8),     OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,                                      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP,                                        KC_END,
     DM_PLY1, DM_PLY2,           OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSL(8), LT(9, KC_SPC),               KC_SPC, KC_SPC, OSM(MOD_RALT), OSM(MOD_RGUI), OSM(MOD_RCTL), KC_LEFT, LT(10, KC_DOWN),       KC_RGHT
   ),
 
   [3] = LAYOUT_65_with_macro( /* Special Fn Layer for Teddie */
-    KC_TRNS, KC_TRNS,          KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,         KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_TRNS,              KC_TRNS,
+    KC_TRNS, KC_TRNS,          QK_GESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,         KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_TRNS,              KC_TRNS,
     KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS,
     KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS,
     KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS,
     DM_PLY1, DM_PLY2,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS
   ),
 
-  [4] = LAYOUT_65_with_macro( /* Speedtyping Layer or when you are annoyed by the lag from the home row modifier TODO separate game speedype layer with dev layer the latter use space cadet */
+  [4] = LAYOUT_65_with_macro( /* Speedtyping Layer without Home Row Modifier */
     KC_TRNS, KC_TRNS,           QK_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,          KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_BSPC,               KC_HOME,
     KC_TRNS, KC_TRNS,           KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                 KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,                 KC_PGUP,
-    MEH(KC_F5), MEH(KC_F6),     LT(7, KC_BSPC), KC_A, KC_S, KC_D, KC_F, KC_G,         KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, LT(6, KC_ENT),                 KC_PGDN,
-    MEH(KC_F7), MEH(KC_F8),     KC_TRNS, KC_Z, KC_X, KC_C, KC_V, KC_B,                KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_TRNS, KC_UP,                    KC_END,
+    KC_TRNS, KC_TRNS,           LT(7, KC_BSPC), KC_A, KC_S, KC_D, KC_F, KC_G,         KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, LT(5, KC_ENT),                 KC_PGDN,
+    KC_TRNS, KC_TRNS,           KC_TRNS, KC_Z, KC_X, KC_C, KC_V, KC_B,                KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_TRNS, KC_UP,                    KC_END,
     DM_PLY1, DM_PLY2,           KC_TRNS, KC_TRNS, KC_TRNS, OSL(8), LT(9, KC_SPC),     KC_SPC, KC_SPC, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, LT(10, KC_DOWN),     KC_RGHT
   ),
 
   [5] = LAYOUT_65_with_macro( /* Data Entry Layer WIP 90percent Felt incomplete */
     KC_TRNS, KC_TRNS,     QK_GESC,     KC_NO, KC_KP_SLASH, KC_KP_ASTERISK, KC_KP_MINUS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,            KC_HOME,
     KC_TRNS, KC_TRNS,     KC_TAB,      KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_PLUS, KC_NO,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,            KC_PGUP,
-    KC_TRNS, KC_TRNS,     KC_BSPC,     KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ENTER, KC_NO,                     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, OSL(10), TG(6),                 KC_PGDN,
+    KC_TRNS, KC_TRNS,     KC_BSPC,     KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ENTER, KC_NO,                     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(5),                 KC_PGDN,
     KC_TRNS, KC_TRNS,     KC_SPC,      KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_EQUAL, KC_NO,                     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_UP,                   KC_END,
     DM_PLY1, DM_PLY2,     KC_NO,       KC_NO, KC_KP_0, KC_KP_0, KC_KP_DOT,                                KC_SPC, KC_SPC, KC_NO, KC_NO, KC_NO, KC_LEFT, LT(10, KC_DOWN),     KC_RGHT
   ),
 
   [7] = LAYOUT_65_with_macro( /* Function 1 Layer QUICK and SPECIAL Access ACS Caps Lock WIP */
-    MEH(KC_KP_1), MEH(KC_KP_2),      KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                    KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_DEL,                                         MEH(KC_HOME),
+    MEH(KC_KP_1), MEH(KC_KP_2),      KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                    KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_DEL,                                         MEH(KC_HOME),
     MEH(KC_KP_3), MEH(KC_KP_4),      MEH(KC_TAB),  MEH(KC_Q), KC_UP, MEH(KC_E), MEH(KC_R), MEH(KC_T),     MEH(KC_Y), MEH(KC_U), MEH(KC_I), MEH(KC_O), MEH(KC_P), MEH(KC_LBRC), MEH(KC_RBRC), MEH(KC_BSLS),     MEH(KC_PGUP),
     MEH(KC_KP_5), MEH(KC_KP_6),      KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, MEH(KC_F), MEH(KC_G),              MEH(KC_H), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MEH(KC_QUOT), MEH(KC_ENT),                           MEH(KC_PGDN),
     MEH(KC_KP_7), MEH(KC_KP_8),      KC_TRNS, MEH(KC_Z), MEH(KC_X), MEH(KC_C), MEH(KC_V), MEH(KC_B),      MEH(KC_N), MEH(KC_M), MEH(KC_COMM), MEH(KC_DOT),  MEH(KC_SLSH), KC_TRNS, MEH(KC_UP),                 MEH(KC_END),
@@ -136,12 +151,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     HYPR(KC_KP_9), HYPR(KC_KP_0),     KC_NO, KC_NO, KC_NO, TG(8), KC_NO,                                                        HYPR(KC_SPC), HYPR(KC_SPC), KC_NO, KC_NO, KC_NO, HYPR(KC_LEFT), HYPR(KC_DOWN),                                 HYPR(KC_RGHT)
   ),
 
-  [10] = LAYOUT_65_with_macro( /* Menu Layer NOTE the Right Mod is there for Shiroyama Encoder RGB */
-    RGB_MOD, RGB_RMOD,     TG(3), TG(6), TG(4), KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT, QK_MAKE, KC_NO, KC_NO,    RGB_SPI,
+  [10] = LAYOUT_65_with_macro( /* Menu Layer NOTE the Right Mod is vestige from Cassie Encoder RGB */
+    RGB_MOD, RGB_RMOD,     TG(3), TG(4), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT, QK_BOOT, TG(10), TG(10),    RGB_SPI,
     KC_NO, KC_NO,          KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_NO, KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,       RGB_VAI,
-    OS_OFF, OS_ON,         KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(6),              RGB_VAD,
+    OS_OFF, OS_ON,         KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(5),              RGB_VAD,
     NK_OFF, NK_ON,         KC_NO, KC_BRID, KC_F15, KC_BRIU, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,              RGB_SPD,
-    DM_REC1, DM_REC2,      KC_NO, DF(1), DF(0), TG(8), TG(10),                   KC_NO, KC_NO, KC_RGUI, KC_RALT, KC_RCTL, RGB_HUD, KC_NO,      RGB_HUI
+    DM_REC1, DM_REC2,      KC_NO, DF(1), DF(0), TG(8), TG(9),                   KC_NO, KC_NO, KC_RGUI, KC_RALT, KC_RCTL, RGB_HUD, KC_NO,      RGB_HUI
   )
 };
 
